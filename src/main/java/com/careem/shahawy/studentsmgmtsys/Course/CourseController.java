@@ -1,7 +1,5 @@
-package com.careem.shahawy.studentsmgmtsys.Controllers;
+package com.careem.shahawy.studentsmgmtsys.Course;
 
-import com.careem.shahawy.studentsmgmtsys.Entities.Course;
-import com.careem.shahawy.studentsmgmtsys.Services.CourseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,7 +23,7 @@ public class CourseController {
             summary = "Get all courses",
             responses = @ApiResponse(responseCode = "200", description = "One page of courses returned (paginated)"))
     @GetMapping("/")
-    public List<Course> getAllCourse(){
+    public List<CourseEntity> getAllCourse(){
         return courseService.findAll();
     }
 
@@ -33,7 +31,7 @@ public class CourseController {
             summary = "Get one course",
             responses = @ApiResponse(responseCode = "200", description = "One course returned"))
     @GetMapping("/{id}")
-    public Course getCourse(@PathVariable int id){
+    public CourseEntity getCourse(@PathVariable int id){
         return courseService.findById(id);
     }
 
@@ -41,7 +39,7 @@ public class CourseController {
             summary = "Create one course",
             responses = @ApiResponse(responseCode = "200", description = "One course is created and returned"))
     @PostMapping("/")
-    public Course addCourse(Course course){
+    public CourseEntity addCourse(CourseEntity course){
         return courseService.add(course);
     }
 
@@ -49,7 +47,7 @@ public class CourseController {
             summary = "Update one course",
             responses = @ApiResponse(responseCode = "200", description = "One course is updated and returned"))
     @PutMapping("/{id}")
-    public Course updateCourse(Course course){
+    public CourseEntity updateCourse(CourseEntity course){
         return courseService.update(course);
     }
 
@@ -57,7 +55,7 @@ public class CourseController {
             summary = "Delete one course",
             responses = @ApiResponse(responseCode = "200", description = "One course is deleted"))
     @DeleteMapping("/{id}")
-    public void deleteCourse(Course course){
+    public void deleteCourse(CourseEntity course){
         courseService.delete(course);
     }
 }

@@ -1,7 +1,5 @@
-package com.careem.shahawy.studentsmgmtsys.Services;
+package com.careem.shahawy.studentsmgmtsys.Teacher;
 
-import com.careem.shahawy.studentsmgmtsys.Entities.Teacher;
-import com.careem.shahawy.studentsmgmtsys.Repositories.TeacherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,27 +12,27 @@ public class TeacherServiceImpl implements TeacherService {
     TeacherRepo teacherRepo;
 
     @Override
-    public Teacher add(Teacher teacher) {
+    public TeacherEntity add(TeacherEntity teacher) {
         return teacherRepo.save(teacher);
     }
 
     @Override
-    public Teacher findById(int id) {
+    public TeacherEntity findById(int id) {
         return teacherRepo.findById(id).orElseThrow();
     }
 
     @Override
-    public List<Teacher> findAll() {
+    public List<TeacherEntity> findAll() {
         return teacherRepo.findAll();
     }
 
     @Override
-    public void delete(Teacher teacher) {
+    public void delete(TeacherEntity teacher) {
         teacherRepo.delete(teacher);
     }
 
     @Override
-    public Teacher update(Teacher teacher) {
+    public TeacherEntity update(TeacherEntity teacher) {
         return teacherRepo.save(teacher);
     }
 }

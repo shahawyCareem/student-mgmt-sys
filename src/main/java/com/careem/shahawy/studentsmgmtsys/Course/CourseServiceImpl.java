@@ -1,7 +1,5 @@
-package com.careem.shahawy.studentsmgmtsys.Services;
+package com.careem.shahawy.studentsmgmtsys.Course;
 
-import com.careem.shahawy.studentsmgmtsys.Entities.Course;
-import com.careem.shahawy.studentsmgmtsys.Repositories.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,27 +12,27 @@ public class CourseServiceImpl implements CourseService {
     CourseRepo courseRepo;
 
     @Override
-    public Course add(Course course) {
+    public CourseEntity add(CourseEntity course) {
         return courseRepo.save(course);
     }
 
     @Override
-    public Course findById(int id) {
+    public CourseEntity findById(int id) {
         return courseRepo.findById(id).orElseThrow();
     }
 
     @Override
-    public List<Course> findAll() {
+    public List<CourseEntity> findAll() {
         return courseRepo.findAll();
     }
 
     @Override
-    public void delete(Course course) {
+    public void delete(CourseEntity course) {
         courseRepo.delete(course);
     }
 
     @Override
-    public Course update(Course course) {
+    public CourseEntity update(CourseEntity course) {
         return courseRepo.save(course);
     }
 }
