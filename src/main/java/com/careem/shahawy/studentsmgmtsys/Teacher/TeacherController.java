@@ -1,7 +1,5 @@
-package com.careem.shahawy.studentsmgmtsys.Controllers;
+package com.careem.shahawy.studentsmgmtsys.Teacher;
 
-import com.careem.shahawy.studentsmgmtsys.Entities.Teacher;
-import com.careem.shahawy.studentsmgmtsys.Services.TeacherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,7 +23,7 @@ public class TeacherController {
             summary = "Get all teachers",
             responses = @ApiResponse(responseCode = "200", description = "One page of teachers returned (paginated)"))
     @GetMapping("/")
-    public List<Teacher> getAllTeachers(){
+    public List<TeacherEntity> getAllTeachers(){
         return teacherService.findAll();
     }
 
@@ -33,7 +31,7 @@ public class TeacherController {
             summary = "Get one teacher",
             responses = @ApiResponse(responseCode = "200", description = "One teacher returned"))
     @GetMapping("/{id}")
-    public Teacher getTeacher(@PathVariable int id){
+    public TeacherEntity getTeacher(@PathVariable int id){
         return teacherService.findById(id);
     }
 
@@ -41,7 +39,7 @@ public class TeacherController {
             summary = "Create one teacher",
             responses = @ApiResponse(responseCode = "200", description = "One teacher is created and returned"))
     @PostMapping("/")
-    public Teacher addSTeacher(Teacher teacher){
+    public TeacherEntity addSTeacher(TeacherEntity teacher){
         return teacherService.add(teacher);
     }
 
@@ -49,7 +47,7 @@ public class TeacherController {
             summary = "Update one teacher",
             responses = @ApiResponse(responseCode = "200", description = "One teacher is updated and returned"))
     @PutMapping("/{id}")
-    public Teacher updateTeacher(Teacher teacher){
+    public TeacherEntity updateTeacher(TeacherEntity teacher){
         return teacherService.update(teacher);
     }
 
@@ -57,7 +55,7 @@ public class TeacherController {
             summary = "Delete one teacher",
             responses = @ApiResponse(responseCode = "200", description = "One teacher is deleted"))
     @DeleteMapping("/{id}")
-    public void deleteTeacher(Teacher teacher){
+    public void deleteTeacher(TeacherEntity teacher){
         teacherService.delete(teacher);
     }
 }

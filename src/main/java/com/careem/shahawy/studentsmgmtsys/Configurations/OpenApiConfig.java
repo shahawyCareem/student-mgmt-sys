@@ -15,12 +15,12 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(
                         new Info()
-                                .title("Student Management System")
-                                .description("Simple Student Management System REST API")
+                                .title("StudentEntity Management System")
+                                .description("Simple StudentEntity Management System REST API")
                                 .version("App version"))
             .externalDocs(
                 new ExternalDocumentation()
-                        .description("Student Management System Docs")
+                        .description("StudentEntity Management System Docs")
                         .url("https://shahawy.com"));
     }
 
