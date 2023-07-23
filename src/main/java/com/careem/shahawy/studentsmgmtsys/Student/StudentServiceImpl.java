@@ -32,6 +32,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public void deleteById(int id) {
+        StudentEntity student = studentRepo.findById(id).orElseThrow();
+        studentRepo.delete(student);
+    }
+    @Override
     public StudentEntity update(StudentEntity student) {
         return studentRepo.save(student);
     }

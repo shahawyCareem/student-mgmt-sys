@@ -3,7 +3,9 @@ package com.careem.shahawy.studentsmgmtsys.Student;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,9 @@ public class StudentController {
 
     @Operation(
             summary = "Get all students",
-            responses = @ApiResponse(responseCode = "200", description = "One page of students returned (paginated)"))@GetMapping("/")
+            responses = @ApiResponse(responseCode = "200", description = "One page of students returned (paginated)"))
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/")
     public List<StudentEntity> getAllStudents(){
         return studentService.findAll();
     }
@@ -29,32 +33,37 @@ public class StudentController {
     @Operation(
             summary = "Get one student",
             responses = @ApiResponse(responseCode = "200", description = "One student returned"))
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public StudentEntity getStudent(@PathVariable int id){
+    public StudentEntity getStudent(@Valid @PathVariable int id){
         return studentService.findById(id);
     }
 
     @Operation(
             summary = "Create one student",
-            responses = @ApiResponse(responseCode = "200", description = "One student is created and returned"))
+            responses = @ApiResponse(responseCode = "201", description = "One student is created and returned"))
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/")
-    public StudentEntity addStudent(StudentEntity student){
+    public StudentEntity addStudent(@Valid @RequestBody StudentEntity student){
         return studentService.add(student);
     }
 
     @Operation(
             summary = "Update one student",
             responses = @ApiResponse(responseCode = "200", description = "One student is updated and returned"))
+    @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
-    public StudentEntity updateStudent(StudentEntity student){
+    public StudentEntity updateStudent(@Valid @PathVariable int id, @Valid @RequestBody StudentEntity student){
+        student.setId(id);
         return studentService.update(student);
     }
 
     @Operation(
             summary = "Delete one student",
-            responses = @ApiResponse(responseCode = "200", description = "One student is deleted"))
+            responses = @ApiResponse(responseCode = "204", description = "One student is deleted"))
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void deleteStudent(StudentEntity student){
-        studentService.delete(student);
+    public void deleteStudent(@Valid @PathVariable int id){
+        studentService.deleteById(id);
     }
 }

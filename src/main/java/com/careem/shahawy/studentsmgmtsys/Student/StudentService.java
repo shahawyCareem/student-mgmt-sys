@@ -11,5 +11,7 @@ public interface StudentService {
 
     public void delete(StudentEntity student);
 
+    public void deleteById(int id);
+
     public StudentEntity update(StudentEntity student);
 }

@@ -11,5 +11,7 @@ public interface TeacherService {
 
     public void delete(TeacherEntity teacher);
 
+    public void deleteById(int id);
+
     public TeacherEntity update(TeacherEntity teacher);
 }

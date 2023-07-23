@@ -11,5 +11,7 @@ public interface CourseService {
 
     public void delete(CourseEntity course);
 
+    public void deleteById(int id);
+
     public CourseEntity update(CourseEntity course);
 }

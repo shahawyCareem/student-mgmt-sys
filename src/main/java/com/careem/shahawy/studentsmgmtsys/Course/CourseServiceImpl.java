@@ -32,6 +32,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public void deleteById(int id) {
+        CourseEntity course = courseRepo.findById(id).orElseThrow();
+        courseRepo.delete(course);
+    }
+
+    @Override
     public CourseEntity update(CourseEntity course) {
         return courseRepo.save(course);
     }

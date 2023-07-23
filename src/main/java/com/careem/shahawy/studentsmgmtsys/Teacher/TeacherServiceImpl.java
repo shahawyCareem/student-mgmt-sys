@@ -32,6 +32,12 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public void deleteById(int id) {
+        TeacherEntity teacher = teacherRepo.findById(id).orElseThrow();
+        teacherRepo.delete(teacher);
+    }
+
+    @Override
     public TeacherEntity update(TeacherEntity teacher) {
         return teacherRepo.save(teacher);
     }
